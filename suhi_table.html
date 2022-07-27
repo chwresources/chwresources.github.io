@@ -43,10 +43,27 @@
                     <tr>
                         <th>
                             <select name="Category" class="search-input">
+                                <options>Amenities</options>
+                                <options>Behavioral Health</options>
                                 <option>Category</option>
+                                <option>Clothing</option>
+                                <option>Disabilities</option>
+                                <option>Domestic, Sexual, and Gender Violence</option>
+                                <option>Emergency</option>
+                                <option>Everything</option>
+                                <option>Family</option>
+                                <option>Financial</option>
                                 <option>Food</option>
                                 <option>Housing</option>
+                                <option>Insurance</option>
+                                <option>Job Training</option>
                                 <option>Legal</option>
+                                <option>Medical</option>
+                                <option>Mutual Aid</option>
+                                <option>Pharmacy</option>
+                                <option>Transportation</option>
+                                <option>Unemployment</option>
+                                <option>Utilities</option>
                             </select>
                         </th>
                         <th>
@@ -63,9 +80,6 @@
                         </th>
                         <th>
                             <input type="text" class="search-input" placeholder="Web Address">
-                        </th>
-                        <th>
-                            <input type="text" class="search-input" placeholder="Services">
                         </th>
                         <th>
                             <input type="text" class="search-input" placeholder="Notes">
@@ -85,7 +99,7 @@
 
 <script>
     /*MUST REPLACE WHATEVER GOOGLE SPREADSHEET LINK str "edit?usp=sharing..." with "export?format=csv" to export as csv (comma separated values) file*/
-    const url = "https://docs.google.com/spreadsheets/d/1YfvBznLgIqjL8Y1pTXGjhKLxtvQIgw4H/export?format=csv";
+    const url = "https://docs.google.com/spreadsheets/d/1rGOAesLX5EibF3XmNI2fGhaxQMs403Cr/export?format=csv";
     
     spreadsheet.innerHTML = "<p>Loading...</p>";
 
@@ -106,8 +120,7 @@
                     "<td><div class='height-spacer'>" + row.Contact + "</div></td>" +
                     "<td><div class='height-spacer'>" + row.Number + "</div></td>" +
                     "<td><div class='height-spacer'>" + row.Location + "</div></td>" +
-                    "<td><div class='height-spacer'>" + row.Web_or_Email + "</div></td>" +
-                    "<td><div class='height-spacer'>" + row.Services + "</div></td>" +
+                    "<td><div class='height-spacer'>" + row.Web + "</div></td>" +
                     "<td><div class='height-spacer'>" + row.Notes + "</div></td>" +
                     "<td><div class='height-spacer'>" + row.Hours + "</div></td>" +
                     "</tr>";
