@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>CHW Spreadsheet</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="suhi.css">
+    <script src="papaparse.min.js"></script>
+</head>
+
+<body>
+    <!--Full Page-->
+    <div class="container">
+        
+        <!--Top Section-->
+        <div class="nav-wrapper">
+            <!--Navigation Bar-->
+            <div class="left-side">
+                <div class="nav-link-wrapper" data-hover="home" active-nav-link>
+                    <a href="index.html"><img src="home.png" style="height:30px"><a/>
+                </div>
+    
+                <div class="nav-link-wrapper" data-hover="table" active-nav-link>
+                    <a href="suhi_table.html"><img src="graph.png" style="height:35px"><a/>
+                </div>
+            </div>
+            <!--Logo-->
+            <div class="right-side">
+                <div class="brand">
+                    <img src="sinai_logo.jpg" style="height:50px">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Content Section-->
+    <div class="content-wrapper">
+        <!--Table-->
+        <div class="table_section">
+            <table class = "table">
+                <thead>
+                    <!--Make Headers Searchable-->
+                    <tr>
+                        <th>
+                            <select name="Category" class="search-input">
+                                <option>Category</option>
+                                <option>Food</option>
+                                <option>Housing</option>
+                                <option>Legal</option>
+                            </select>
+                        </th>
+                        <th>
+                            <input type="text" class="search-input" placeholder="Name">
+                        </th>
+                        <th>
+                            <input type="text" class="search-input" placeholder="Contact">
+                        </th>
+                        <th>
+                            <input type="text" class="search-input" placeholder="Number">
+                        </th>
+                        <th>
+                            <input type="text" class="search-input" placeholder="Location">
+                        </th>
+                        <th>
+                            <input type="text" class="search-input" placeholder="Web Address">
+                        </th>
+                        <th>
+                            <input type="text" class="search-input" placeholder="Services">
+                        </th>
+                        <th>
+                            <input type="text" class="search-input" placeholder="Notes">
+                        </th>
+                        <th>
+                            <input type="text" class="search-input" placeholder="Hours">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="spreadsheet">
+                <!--gets replaced by innerHTML function in script-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script>
+    /*MUST REPLACE WHATEVER GOOGLE SPREADSHEET LINK str "edit?usp=sharing..." with "export?format=csv" to export as csv (comma separated values) file*/
+    const url = "https://docs.google.com/spreadsheets/d/1YfvBznLgIqjL8Y1pTXGjhKLxtvQIgw4H/export?format=csv";
+    
+    spreadsheet.innerHTML = "<p>Loading...</p>";
+
+    Papa.parse(url, {
+        download: true,
+        header: true,
+        complete: (results) => {
+            const data = results.data;
+            //clear "load" bar
+            spreadsheet.innerHTML = "";
+
+            //add each row as table elements
+            data.forEach(function(row){
+                //only way to set height of each row is to use div inside each td
+                    spreadsheet.innerHTML += "<tr>" +
+                    "<td><div class='height-spacer'>" + row.Category + "</div></td>" +
+                    "<td><div class='height-spacer'>" + row.Name + "</div></td>" +
+                    "<td><div class='height-spacer'>" + row.Contact + "</div></td>" +
+                    "<td><div class='height-spacer'>" + row.Number + "</div></td>" +
+                    "<td><div class='height-spacer'>" + row.Location + "</div></td>" +
+                    "<td><div class='height-spacer'>" + row.Web_or_Email + "</div></td>" +
+                    "<td><div class='height-spacer'>" + row.Services + "</div></td>" +
+                    "<td><div class='height-spacer'>" + row.Notes + "</div></td>" +
+                    "<td><div class='height-spacer'>" + row.Hours + "</div></td>" +
+                    "</tr>";
+            });
+        }
+    });
+</script>
+
+<script src="tablesearch.js"></script>
+
+</html>
