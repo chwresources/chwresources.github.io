@@ -17,10 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 //allow case insensitive, comma-ignoring search
                 const value = tableCell.textContent.toLowerCase().replace(",", "").replace("-", "");
                 //reset view for each row
-                row.style.visibility = null;
+                //row.style.visibility = null;
+                row.style.display = "table-row";
                 //does it match?
                 if (value.search(searchQuery) == -1){
-                    row.style.visibility = "collapse";
+                    //row.style.visibility = "collapse";
+                    row.style.display = "none";
                 }
             }
         })
